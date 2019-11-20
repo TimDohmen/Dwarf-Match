@@ -1,7 +1,7 @@
-import DwarfsController from "./Controllers/DwarfsController.js";
+import GamesController from "./Controllers/GamesController.js";
 
 class App {
-  dwarfsController = new DwarfsController();
+  gamesController = new GamesController();
 }
 
 window["app"] = new App();

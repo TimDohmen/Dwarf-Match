@@ -1,9 +1,49 @@
-import Value from "./Models/Dwarf";
+import Card from "./Models/Card.js";
+let imgRoot = 'assets/cards/'
+
 
 let _state = {
-  activeValue: new Value(),
-  /** @type {Value[]} */
-  values: []
+  activeDeck: [],
+  /** @type {Card[]} */
+  cards: [new Card({
+    title: 'Battle Axe',
+    url: imgRoot + 'battle-axe.png',
+  }), new Card({
+    title: 'Beard',
+    url: imgRoot + 'beard.png',
+  }), new Card({
+    title: 'Beer Stein',
+    url: imgRoot + 'beer-stein.png',
+  }), new Card({
+    title: 'BreastPlate',
+    url: imgRoot + 'breastplate.png',
+  }), new Card({
+    title: 'Broadsword',
+    url: imgRoot + 'broadsword.png',
+  }), new Card({
+    title: 'Brutal Helm',
+    url: imgRoot + 'brutal-helm.png',
+  }), new Card({
+    title: 'Crossed Axes',
+    url: imgRoot + 'crossed-axes.png',
+  }), new Card({
+    title: 'Emerald',
+    url: imgRoot + 'emerald.png',
+  }), new Card({
+    title: 'Hammer',
+    url: imgRoot + 'flat-hammer.png',
+  }), new Card({
+    title: 'Gauntlet',
+    url: imgRoot + 'mailed-fist.png',
+  }), new Card({
+    title: 'Meat',
+    url: imgRoot + 'meat.png',
+  }), new Card({
+    title: 'Pick Axe',
+    url: imgRoot + 'mining.png',
+  })],
+  firstGuess: {},
+  secondGuess: {}
 };
 
 //NOTE You should not need to change the code from this point down
