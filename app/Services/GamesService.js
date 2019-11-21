@@ -46,26 +46,37 @@ let _cards = [{
 //Public
 class DwarfsService {
 
-  newDeck() {
-    store.State.activeDeck = this.shuffle(this.shuffle(store.State.cards).concat(this.shuffle(store.State.cards)))
-  }
 
 
   selectCard(card) {
     let first = store.State.firstGuess
     let second = store.State.secondGuess
-    if (!store.State.firstGuess) {
-      first = card
+    if (!store.State.firstGuess.title) {
+      first.title = card
     } else {
-      second = card
-    }
-    if (first == second) {
-      console.log("chicken dinner")
-    } else {
-      console.log("Try again noob")
+      second.title = card
+      if (first.title == second.title) {
+        console.log("chicken dinner")
+        store.State.firstGuess = {}
+        store.State.SecondGuess = {}
+        let index = store.State.activeDeck.findIndex(c => c.title == card)
+        store.State.activeDeck.splice[index]
+        debugger
+        let indexTwo = store.State.activeDeck.findIndex(c => c.title == card)
+        store.State.activeDeck.splice[indexTwo]
+
+      } else {
+        console.log("Try again noob")
+        store.State.firstGuess = {}
+        store.State.SecondGuess = {}
+      }
+
     }
   }
 
+  newDeck() {
+    store.State.activeDeck = this.shuffle(this.shuffle(store.State.cards).concat(this.shuffle(store.State.cards)))
+  }
 
   shuffle(deck) {
     //fisher-yates algorithm

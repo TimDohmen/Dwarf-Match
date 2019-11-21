@@ -16,9 +16,8 @@ export default class GamesController {
 
 
   selectCard(cardTitle) {
-    debugger;
     _gamesService.selectCard(cardTitle)
-    _drawGames
+    // _drawGames()
   }
 
 }
