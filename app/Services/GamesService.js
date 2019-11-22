@@ -59,18 +59,22 @@ class DwarfsService {
         console.log("chicken dinner")
         store.State.firstGuess = {}
         store.State.SecondGuess = {}
-        let index = store.State.activeDeck.findIndex(c => c.title == card)
-        store.State.activeDeck.splice[index]
-        debugger
-        let indexTwo = store.State.activeDeck.findIndex(c => c.title == card)
-        store.State.activeDeck.splice[indexTwo]
+        store.State.guessCount++
+        store.State.correctCount++
+
+        // let index = store.State.activeDeck.findIndex(c => c.title == card)
+        // store.State.activeDeck.splice[index]
+
+        // let indexTwo = store.State.activeDeck.findIndex(c => c.title == card)
+        // store.State.activeDeck.splice[indexTwo]
 
       } else {
         console.log("Try again noob")
         store.State.firstGuess = {}
         store.State.SecondGuess = {}
-      }
+        store.State.guessCount++
 
+      }
     }
   }
 

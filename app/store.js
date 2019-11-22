@@ -43,7 +43,11 @@ let _state = {
     url: imgRoot + 'mining.png',
   })],
   firstGuess: {},
-  secondGuess: {}
+  secondGuess: {},
+  guessCount: 0,
+  correctCount: 0,
+
+
 };
 
 //NOTE You should not need to change the code from this point down
