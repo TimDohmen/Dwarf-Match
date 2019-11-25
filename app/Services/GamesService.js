@@ -56,7 +56,7 @@ class DwarfsService {
       first.flipped
       store.State.firstGuess = first
 
-    } else {
+    } else if (!store.State.secondGuess.title) {
       let second = store.State.activeDeck[cardIndex]
       store.State.secondGuess = second
       second.show = true
@@ -64,7 +64,7 @@ class DwarfsService {
       if (store.State.firstGuess.title == second.title) {
         console.log("chicken dinner")
         store.State.firstGuess = {}
-        store.State.SecondGuess = {}
+        store.State.secondGuess = {}
         store.State.guessCount++
         store.State.correctCount++
 
@@ -72,18 +72,22 @@ class DwarfsService {
         this.unflipCards(callback)
       }
     }
+    else {
+      console.log("too fast")
+
+    }
 
   }
 
 
-  async unflipCards(callback) {
+  unflipCards(callback) {
     setTimeout(() => {
       store.State.firstGuess.show = false;
       store.State.secondGuess.show = false;
       store.State.firstGuess.flipped
       store.State.secondGuess.flipped
       store.State.firstGuess = {}
-      store.State.SecondGuess = {}
+      store.State.secondGuess = {}
       store.State.guessCount++
       callback()
     }, 1500);

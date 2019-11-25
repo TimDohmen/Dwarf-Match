@@ -46,6 +46,7 @@ let _state = {
   secondGuess: {},
   guessCount: 0,
   correctCount: 0,
+  lockBoard: false
 
 
 };
