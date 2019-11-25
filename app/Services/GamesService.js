@@ -52,7 +52,11 @@ class DwarfsService {
     let first = store.State.firstGuess
     let second = store.State.secondGuess
     if (!store.State.firstGuess.title) {
-      first.title = card
+      console.log(card)
+      first = store.State.activeDeck[card]
+      first.show = true
+      first.flipped
+      console.log(first)
     } else {
       second.title = card
       if (first.title == second.title) {

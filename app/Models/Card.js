@@ -3,6 +3,7 @@ export default class Card {
         this.url = data.url
         this.title = data.title
         this.show = false
+
     }
 
     get flipped() {
@@ -10,9 +11,9 @@ export default class Card {
     }
 
 
-    get Template() {
+    getTemplate(index) {
         return `
-    <div class="flip col-sm-3" onclick="app.gamesController.selectCard('${this.title}')">
+    <div class="flip col-sm-3 p-2 " onclick="app.gamesController.selectCard(${index})">
         <div class="card ${this.flipped}">
             <div class="face front">
                 <img src="assets/cards/dwarf-face.png" style="background-color: white;" height="120" alt="Logo">

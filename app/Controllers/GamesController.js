@@ -3,7 +3,7 @@ import _store from '../store.js'
 
 function _drawGame() {
   let template = ''
-  _store.State.activeDeck.forEach(card => template += card.Template)
+  _store.State.activeDeck.forEach((card, i) => template += card.getTemplate(i))
   document.querySelector("#cards").innerHTML = template
 
 }
@@ -19,8 +19,8 @@ export default class GamesController {
   }
 
 
-  selectCard(cardTitle) {
-    _gamesService.selectCard(cardTitle)
+  selectCard(cardIndex) {
+    _gamesService.selectCard(cardIndex)
     _count()
     _drawGame()
   }
