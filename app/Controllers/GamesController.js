@@ -20,9 +20,10 @@ export default class GamesController {
 
 
   selectCard(cardIndex) {
-    _gamesService.selectCard(cardIndex)
+    _gamesService.selectCard(cardIndex, _drawGame)
     _count()
     _drawGame()
   }
+
 
 }

@@ -48,42 +48,52 @@ class DwarfsService {
 
 
 
-  selectCard(card) {
-    let first = store.State.firstGuess
-    let second = store.State.secondGuess
+  selectCard(cardIndex, callback) {
+
     if (!store.State.firstGuess.title) {
-      console.log(card)
-      first = store.State.activeDeck[card]
+      let first = store.State.activeDeck[cardIndex]
       first.show = true
       first.flipped
-      console.log(first)
+      store.State.firstGuess = first
+
     } else {
-      second.title = card
-      if (first.title == second.title) {
+      let second = store.State.activeDeck[cardIndex]
+      store.State.secondGuess = second
+      second.show = true
+      second.flipped
+      if (store.State.firstGuess.title == second.title) {
         console.log("chicken dinner")
         store.State.firstGuess = {}
         store.State.SecondGuess = {}
         store.State.guessCount++
         store.State.correctCount++
 
-        // let index = store.State.activeDeck.findIndex(c => c.title == card)
-        // store.State.activeDeck.splice[index]
-
-        // let indexTwo = store.State.activeDeck.findIndex(c => c.title == card)
-        // store.State.activeDeck.splice[indexTwo]
-
       } else {
-        console.log("Try again noob")
-        store.State.firstGuess = {}
-        store.State.SecondGuess = {}
-        store.State.guessCount++
-
+        this.unflipCards(callback)
       }
     }
+
+  }
+
+
+  async unflipCards(callback) {
+    setTimeout(() => {
+      store.State.firstGuess.show = false;
+      store.State.secondGuess.show = false;
+      store.State.firstGuess.flipped
+      store.State.secondGuess.flipped
+      store.State.firstGuess = {}
+      store.State.SecondGuess = {}
+      store.State.guessCount++
+      callback()
+    }, 1500);
   }
 
   newDeck() {
-    store.State.activeDeck = this.shuffle(this.shuffle(store.State.cards).concat(this.shuffle(store.State.cards)))
+    let d1 = store.State.cards.map(c => new Card(c))
+    let d2 = store.State.cards.map(c => new Card(c))
+
+    store.State.activeDeck = this.shuffle(this.shuffle(d1).concat(this.shuffle(d2)))
   }
 
   shuffle(deck) {
