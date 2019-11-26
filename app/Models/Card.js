@@ -15,22 +15,19 @@ export default class Card {
         return `
     <div class="flip col-sm-3 p-2 " onclick="app.gamesController.selectCard(${index})">
         <div class="card ${this.flipped}">
-            <div class="face front">
-                <img src="assets/cards/dwarf-face.png" style="background-color: white;" height="120" alt="Logo">
-                <h3>Dwarf Match</h3>
-            </div>
-            <div class="face back">
-            <img src="${this.url}" height="80" alt="">
+        <div class="face back">
+            <img src="${this.url}" height="100" alt="">
                 <h3>${this.title}</h3>
+            </div>
+            <div class="face front">
+                <h3>Dwarf Match</h3>
+                <img src="assets/cards/dwarf-face.png" style="background-color: white;" height="100" alt="Logo">
             </div>
         </div>
     </div> 
                `
     }
 
-    //  <div class="col-3 m-3 p-2 border clickable-card rounded bg-dark" onclick="app.gamesController.selectCard('${this.title}')">
-    // <img src="${this.url}" alt="">
-    //     <h5>${this.title}</h5>
-    //              </div>
+
 }
 
