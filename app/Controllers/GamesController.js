@@ -26,8 +26,8 @@ export default class GamesController {
 
   selectCard(cardIndex) {
     _gamesService.selectCard(cardIndex, { _drawGame, _drawRestart })
-    _count()
     _drawGame()
+    _count()
   }
 
   restart() {
