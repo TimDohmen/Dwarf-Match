@@ -10,7 +10,7 @@ Most of the legwork has already been completed, you don't need to worry about ho
 <hr>
 
 <h2>Goals</h2>
-In this checkpoint students will demonstrate their understanding of working with the DOM and dynamically rendering data to the page. They will be responsible for writing functions to handle input and manipulate the DOM based off given input.
+In this checkpoint students will demonstrate their understanding of working with the DOM and dynamically rendering data to the page. They will be responsible for writing functions to handle input, follow the MVCs pattern, and manipulate the DOM based off given input.
 
 
 <hr>
