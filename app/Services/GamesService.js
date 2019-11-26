@@ -41,39 +41,37 @@ let _cards = [{
   url: imgRoot + 'mining.png',
 }]
 
-
+let firstGuess = store.State.firstGuess
+let secondGuess = store.State.secondGuess
 
 //Public
 class DwarfsService {
   restart(callback) {
     this.newDeck()
-    store.State.firstGuess = {}
-    store.State.secondGuess = {}
+    firstGuess = {}
+    secondGuess = {}
     store.State.guessCount = 0
     store.State.correctCount = 0
     callback()
   }
 
-
-
   selectCard(cardIndex, callback) {
-
-    if (!store.State.firstGuess.title) {
-      let first = store.State.activeDeck[cardIndex]
-      first.show = true
-      first.flipped
-      first.index = cardIndex
-      store.State.firstGuess = first
-    } else if (cardIndex == store.State.firstGuess.index) {
+    if (!firstGuess.title) {
+      let firstCard = store.State.activeDeck[cardIndex]
+      firstCard.show = true
+      firstCard.flipped
+      firstCard.index = cardIndex
+      firstGuess = firstCard
+    } else if (cardIndex == firstGuess.index) {
       return;
-    } else if (!store.State.secondGuess.title) {
-      let second = store.State.activeDeck[cardIndex]
-      second.show = true
-      second.flipped
-      store.State.secondGuess = second
-      if (store.State.firstGuess.title == second.title) {
-        store.State.firstGuess = {}
-        store.State.secondGuess = {}
+    } else if (!secondGuess.title) {
+      let secondCard = store.State.activeDeck[cardIndex]
+      secondCard.show = true
+      secondCard.flipped
+      secondGuess = secondCard
+      if (firstGuess.title == secondGuess.title) {
+        firstGuess = {}
+        secondGuess = {}
         store.State.guessCount++
         store.State.correctCount++
         if (store.State.correctCount == 12) {
@@ -89,16 +87,18 @@ class DwarfsService {
 
   unflipCards(callback) {
     setTimeout(() => {
-      store.State.firstGuess.show = false;
-      store.State.secondGuess.show = false;
-      store.State.firstGuess.flipped
-      store.State.secondGuess.flipped
-      store.State.firstGuess = {}
-      store.State.secondGuess = {}
+      firstGuess.show = false;
+      secondGuess.show = false;
+      firstGuess.flipped
+      secondGuess.flipped
+      firstGuess = {}
+      secondGuess = {}
       store.State.guessCount++
       callback._drawGame()
     }, 1500);
   }
+
+
 
   newDeck() {
     let d1 = store.State.cards.map(c => new Card(c))
